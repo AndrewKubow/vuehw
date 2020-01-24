@@ -1,6 +1,9 @@
 <template>
   <div id="app">
-    <Header />
+    <Header
+    :nmbCorrect="nmbCorrect"
+    :nmbTotal="nmbTotal"
+    />
     <b-container>
       <b-row>
         <b-col sm="6" offset="3">
@@ -8,6 +11,7 @@
             v-if="questions.length"
             :currentQuestion="questions[index]"
             :next="next"
+            :increment="increment"
           />
         </b-col>
       </b-row>
@@ -29,13 +33,22 @@ export default {
   data(){
     return{
       questions: [],
-      index: 0
+      index: 0,
+      nmbCorrect: 0,
+      nmbTotal: 0
     }
   },
   methods: {
     next (){
       this.index++
+    },
+    increment(isCorrect){
+      if (isCorrect){
+        this.nmbCorrect++
+      }
+      this.nmbTotal++
     }
+
   },
   mounted: function() {
     fetch('https://opentdb.com/api.php?amount=10&category=25', {
