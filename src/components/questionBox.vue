@@ -102,13 +102,16 @@
 
 
 </script>
-<style scoped>
+<style scoped lang="scss">
     .list-group{
         margin-bottom: 20px;
     }
-    .list-group-item:hover{
-        background: #e9ecef;
-        cursor: pointer;
+    .list-group-item{
+        &:hover{
+
+            background: #e9ecef;
+            cursor: pointer;
+        }
     }
     .btn{
         margin: 0 5px;
